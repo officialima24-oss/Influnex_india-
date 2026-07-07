@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Influnex India — Influencer Marketing Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0E14;
+    --panel:#12161F;
+    --panel-2:#171C27;
+    --line: rgba(242,240,234,0.09);
+    --text:#F2F0EA;
+    --muted:#8A90A2;
+    --gold:#E8A94C;
+    --coral:#FF6B5B;
+    --gold-dim: rgba(232,169,76,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  body::before{
+    content:'';
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  nav, header, section, footer{ position:relative; z-index:2; }
+  h1,h2,h3, .display{ font-family:'Space Grotesk', sans-serif; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  ::selection{ background:var(--gold); color:var(--ink); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(11,14,20,0.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo-mark{ display:flex; align-items:center; gap:12px; }
+  .logo-word{ font-size:20px; font-weight:700; letter-spacing:-0.02em; }
+  .logo-word .x{ color:var(--gold); }
+  .logo-sub{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.18em;
+    color:var(--muted); text-transform:uppercase; margin-top:2px;
+  }
+  .nav-links{ display:flex; gap:36px; align-items:center; }
+  .nav-links a{ font-size:14px; color:var(--muted); transition:color .2s; }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-cta{
+    background:var(--gold); color:var(--ink) !important; padding:10px 20px;
+    border-radius:100px; font-size:13px; font-weight:600;
+  }
+  .nav-cta:hover{ background:#f0bb6a; }
+  .burger{ display:none; }
+
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .burger{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:170px 0 110px;
+    position:relative;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.12em;
+    color:var(--gold); text-transform:uppercase; margin-bottom:22px;
+  }
+  .eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--gold); }
+  h1.headline{
+    font-size:56px; line-height:1.05; letter-spacing:-0.03em; font-weight:600;
+    margin-bottom:24px;
+  }
+  h1.headline .accent{ color:var(--gold); }
+  .hero-sub{
+    font-size:17px; line-height:1.65; color:var(--muted); max-width:480px; margin-bottom:36px;
+  }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    padding:14px 26px; border-radius:100px; font-size:14px; font-weight:600;
+    display:inline-flex; align-items:center; gap:8px; transition:all .2s;
+  }
+  .btn-primary{ background:var(--gold); color:var(--ink); }
+  .btn-primary:hover{ background:#f0bb6a; transform:translateY(-1px); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+
+  /* network signature visual */
+  .network{
+    position:relative; height:420px;
+  }
+  .cluster-label{
+    position:absolute; font-family:'IBM Plex Mono', monospace; font-size:10px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);
+  }
+  .cluster-label.brands{ top:14px; left:6px; }
+  .cluster-label.creators{ bottom:14px; right:6px; }
+  svg.netsvg{ width:100%; height:100%; overflow:visible; }
+  .node-brand{ fill:var(--panel-2); stroke:var(--gold); stroke-width:1.4; }
+  .node-creator{ fill:var(--panel-2); stroke:var(--coral); stroke-width:1.4; }
+  .node-core{ fill:var(--gold); }
+  .link-line{
+    stroke:var(--gold); stroke-opacity:0.35; stroke-width:1.3; fill:none;
+    stroke-dasharray:5 6;
+    animation:flow 3.5s linear infinite;
+  }
+  .link-line.c{ stroke:var(--coral); }
+  @keyframes flow{ to{ stroke-dashoffset:-110; } }
+  .pulse{
+    animation:pulse 2.6s ease-in-out infinite;
+    transform-origin:center;
+  }
+  @keyframes pulse{
+    0%,100%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.18); opacity:0.75; }
+  }
+
+  @media (max-width:860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    h1.headline{ font-size:38px; }
+    .network{ height:280px; margin-top:20px; }
+  }
+
+  /* ---------- SECTION shared ---------- */
+  section{ padding:100px 0; border-bottom:1px solid var(--line); }
+  .section-head{ max-width:620px; margin-bottom:56px; }
+  .section-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em;
+    color:var(--coral); text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  .section-head h2{ font-size:34px; letter-spacing:-0.02em; line-height:1.2; margin-bottom:16px; }
+  .section-head p{ color:var(--muted); font-size:16px; line-height:1.65; }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  }
+  .service-card{ background:var(--panel); padding:32px 26px; transition:background .2s; }
+  .service-card:hover{ background:var(--panel-2); }
+  .service-icon{ color:var(--gold); margin-bottom:24px; display:block; }
+  .service-card:nth-child(2n) .service-icon{ color:var(--coral); }
+  .service-card h3{ font-size:17px; margin-bottom:10px; letter-spacing:-0.01em; }
+  .service-card p{ font-size:14px; color:var(--muted); line-height:1.6; }
+  @media (max-width:860px){ .services-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .services-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- STATS ---------- */
+  .stats-band{ background:var(--panel); }
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0 40px;
+  }
+  .stat-item{ padding:26px 0; border-bottom:1px solid var(--line); }
+  .stat-item:nth-last-child(-n+3){ border-bottom:none; }
+  .stat-num{ font-size:44px; font-weight:600; letter-spacing:-0.02em; }
+  .stat-num .u{ color:var(--gold); }
+  .stat-label{ color:var(--muted); font-size:14px; margin-top:6px; }
+  .stat-note{
+    grid-column:1/-1; font-family:'IBM Plex Mono', monospace; font-size:11px;
+    color:var(--muted); opacity:0.6; margin-top:8px;
+  }
+  @media (max-width:700px){ .stats-grid{ grid-template-columns:1fr 1fr; } .stat-item:nth-last-child(-n+3){ border-bottom:1px solid var(--line);} .stat-item:nth-last-child(-n+2){ border-bottom:none; } }
+
+  /* ---------- PROCESS ---------- */
+  .process-list{ display:flex; flex-direction:column; }
+  .process-row{
+    display:grid; grid-template-columns:70px 1fr 1fr; gap:24px;
+    padding:28px 0; border-top:1px solid var(--line); align-items:start;
+  }
+  .process-row:last-child{ border-bottom:1px solid var(--line); }
+  .process-idx{ font-family:'IBM Plex Mono', monospace; color:var(--gold); font-size:14px; padding-top:4px; }
+  .process-row h3{ font-size:19px; letter-spacing:-0.01em; }
+  .process-row p{ color:var(--muted); font-size:14.5px; line-height:1.6; }
+  @media (max-width:700px){
+    .process-row{ grid-template-columns:40px 1fr; }
+    .process-row p{ grid-column:2/3; }
+  }
+
+  /* ---------- WHO WE WORK WITH ---------- */
+  .audience-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .audience-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:36px;
+  }
+  .audience-card .tag{ color:var(--gold); font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; }
+  .audience-card h3{ font-size:24px; margin:14px 0 12px; letter-spacing:-0.02em; }
+  .audience-card p{ color:var(--muted); font-size:14.5px; line-height:1.65; margin-bottom:18px; }
+  .audience-card ul{ list-style:none; }
+  .audience-card li{ font-size:14px; color:var(--text); padding:8px 0; border-top:1px solid var(--line); }
+  .audience-card li:first-child{ border-top:none; }
+  @media (max-width:700px){ .audience-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+  .contact-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:42px;
+  }
+  .contact-card .avatar{
+    width:56px; height:56px; border-radius:50%; background:var(--gold-dim);
+    border:1px solid var(--gold); display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; color:var(--gold); font-size:20px;
+    margin-bottom:18px;
+  }
+  .contact-card h3{ font-size:20px; margin-bottom:2px; }
+  .contact-card .role{ color:var(--muted); font-size:13px; margin-bottom:26px; }
+  .contact-row{
+    display:flex; align-items:center; gap:14px; padding:14px 0; border-top:1px solid var(--line);
+  }
+  .contact-row:first-of-type{ border-top:none; }
+  .contact-row .ic{
+    width:34px; height:34px; border-radius:9px; background:var(--panel-2);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    color:var(--coral); font-family:'IBM Plex Mono', monospace; font-size:14px;
+  }
+  .contact-row a{ font-size:14.5px; color:var(--text); }
+  .contact-row a:hover{ color:var(--gold); }
+  .contact-copy h2{ font-size:32px; letter-spacing:-0.02em; margin-bottom:18px; line-height:1.2; }
+  .contact-copy p{ color:var(--muted); font-size:15.5px; line-height:1.7; margin-bottom:28px; }
+  @media (max-width:860px){ .contact-inner{ grid-template-columns:1fr; } }
+
+  footer{ padding:40px 0; }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-inner p{ color:var(--muted); font-size:13px; }
+  .footer-mark{ display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; }
+  .footer-mark .x{ color:var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo-mark">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <circle cx="9" cy="9" r="6" fill="none" stroke="#E8A94C" stroke-width="1.6"/>
+        <circle cx="25" cy="25" r="6" fill="none" stroke="#FF6B5B" stroke-width="1.6"/>
+        <line x1="12.5" y1="12.5" x2="21.5" y2="21.5" stroke="#E8A94C" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <circle cx="17" cy="17" r="2.4" fill="#E8A94C"/>
+      </svg>
+      <div>
+        <div class="logo-word">INFLU<span class="x">NEX</span></div>
+        <div class="logo-sub">India</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#stats">Results</a>
+      <a href="#process">Process</a>
+      <a href="#audience">Who we serve</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Influencer Marketing Agency</span>
+      <h1 class="headline">We connect brands with the <span class="accent">right voices.</span></h1>
+      <p class="hero-sub">Influnex India sits between companies and creators — sourcing the right influencers, negotiating the collaboration, and running the campaign end to end so both sides get a result worth repeating.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Start a campaign</a>
+        <a href="tel:+917889593803" class="btn btn-ghost">Call +91 78895 93803</a>
+      </div>
+    </div>
+
+    <div class="network">
+      <span class="cluster-label brands">Brands</span>
+      <span class="cluster-label creators">Creators</span>
+      <svg class="netsvg" viewBox="0 0 400 420">
+        <!-- links -->
+        <path class="link-line" d="M60,60 C160,120 220,160 300,220" />
+        <path class="link-line c" d="M60,140 C160,160 220,200 300,220" />
+        <path class="link-line" d="M60,220 C160,220 220,220 300,220" />
+        <path class="link-line c" d="M60,300 C160,260 220,240 300,220" />
+        <path class="link-line" d="M60,60 C120,180 180,200 300,300" />
+        <path class="link-line c" d="M60,140 C140,220 220,260 300,340" />
+        <path class="link-line" d="M60,220 C150,260 220,280 300,300" />
+        <path class="link-line c" d="M60,300 C160,320 220,330 300,340" />
+
+        <!-- core -->
+        <circle class="node-core pulse" cx="180" cy="240" r="9"/>
+
+        <!-- brand nodes (gold) -->
+        <circle class="node-brand" cx="60" cy="60" r="16"/>
+        <circle class="node-brand" cx="60" cy="140" r="16"/>
+        <circle class="node-brand" cx="60" cy="220" r="16"/>
+        <circle class="node-brand" cx="60" cy="300" r="16"/>
+
+        <!-- creator nodes (coral) -->
+        <circle class="node-creator" cx="300" cy="220" r="14"/>
+        <circle class="node-creator" cx="300" cy="300" r="14"/>
+        <circle class="node-creator" cx="300" cy="340" r="14"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">What we do</span>
+      <h2>One agency, both sides of the deal.</h2>
+      <p>Most brands and most creators are looking for the same thing from different sides of the table. We handle the match, the negotiation, and the delivery.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-icon" width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M19.5 19.5L15.2 15.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Influencer sourcing</h3>
+        <p>We shortlist creators by audience fit and engagement quality, not follower count alone.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="4.5" width="18" height="16" rx="2.4" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M3 9.5H21" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M7.5 2.5V6.5M16.5 2.5V6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Campaign management</h3>
+        <p>Briefs, timelines, approvals, and delivery — managed so the brand only sees the finished work.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M4 20V6.5C4 5.1 5.1 4 6.5 4H15L20 9V17.5C20 18.9 18.9 20 17.5 20H4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M14.5 4V8.5C14.5 8.8 14.7 9 15 9H19.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M8 13H16M8 16.5H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Content strategy</h3>
+        <p>Formats and hooks built around what the platform actually rewards, not generic ad copy.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M4 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M4 20H21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M8 20V13M13 20V9M18 20V6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <h3>Performance reporting</h3>
+        <p>Reach, engagement, and conversion tracked per creator, shared back in a plain-language report.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stats" class="stats-band">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Where we stand</span>
+      <h2>Numbers we'll update as campaigns close.</h2>
+      <p>Influnex India is actively onboarding brand and creator partners — the figures below are placeholders to swap in as real campaign data comes in.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">0<span class="u">%</span></div>
+        <div class="stat-label">Increase in brand awareness</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<span class="u">+</span></div>
+        <div class="stat-label">Influencer partners onboarded</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0<span class="u">%</span></div>
+        <div class="stat-label">Client satisfaction rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0<span class="u">%</span></div>
+        <div class="stat-label">Campaign success rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0<span class="u">K</span></div>
+        <div class="stat-label">Engagements generated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Collaborations executed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">How we work</span>
+      <h2>From first brief to final report.</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-row">
+        <div class="process-idx">01</div>
+        <h3>Discover</h3>
+        <p>We learn the brand's goals, audience, and budget — or the creator's niche, rates, and availability.</p>
+      </div>
+      <div class="process-row">
+        <div class="process-idx">02</div>
+        <h3>Match</h3>
+        <p>We shortlist and pair brands with creators whose audience actually overlaps with the target market.</p>
+      </div>
+      <div class="process-row">
+        <div class="process-idx">03</div>
+        <h3>Launch</h3>
+        <p>Contracts, briefs, and content timelines are set, and the collaboration goes live on schedule.</p>
+      </div>
+      <div class="process-row">
+        <div class="process-idx">04</div>
+        <h3>Report</h3>
+        <p>We close the loop with a results summary — reach, engagement, and what to do differently next time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="audience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Who we serve</span>
+      <h2>Built for both sides of the table.</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="tag">For brands</span>
+        <h3>Reach an audience that already trusts a voice.</h3>
+        <p>Skip the guesswork of finding creators yourself. Tell us the goal and the budget — we bring back a shortlist and manage the rest.</p>
+        <ul>
+          <li>Vetted creator shortlists by category</li>
+          <li>Single point of contact for every campaign</li>
+          <li>Reporting after every collaboration</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="tag">For creators</span>
+        <h3>Get matched with brands worth working with.</h3>
+        <p>We bring paid collaborations to you, handle the negotiation, and make sure the brief actually fits your content.</p>
+        <ul>
+          <li>Fair-rate negotiation on your behalf</li>
+          <li>Briefs that respect your format and voice</li>
+          <li>Timely payments, no chasing invoices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap contact-inner">
+    <div class="contact-copy">
+      <span class="section-tag">Get in touch</span>
+      <h2>Tell us what you're trying to promote — or who you're trying to become.</h2>
+      <p>Whether you're a brand looking for the right creators or a creator looking for paid work, Influnex India is the one call to make.</p>
+      <div class="cta-row">
+        <a href="mailto:official.ima24@gmail.com" class="btn btn-primary">Email us</a>
+        <a href="tel:+917889593803" class="btn btn-ghost">Call now</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="avatar">S</div>
+      <h3>Shafqat</h3>
+      <div class="role">Founder, Influnex India</div>
+
+      <div class="contact-row">
+        <div class="ic">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3.5 6.5L12 13L20.5 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <a href="mailto:official.ima24@gmail.com">official.ima24@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <div class="ic">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M6.5 3.5L9.5 6.5C10 7 10 7.7 9.6 8.2L7.8 10.4C9 13 11 15 13.6 16.2L15.8 14.4C16.3 14 17 14 17.5 14.5L20.5 17.5C21 18 21 18.8 20.4 19.2C19.3 20.1 17.8 20.6 16.4 20.2C11.8 19 5 12.2 3.8 7.6C3.4 6.2 3.9 4.7 4.8 3.6C5.2 3 6 3 6.5 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <a href="tel:+917889593803">+91 78895 93803</a>
+      </div>
+      <div class="contact-row">
+        <div class="ic">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M12 21C12 21 5 14.5 5 9.5C5 5.9 8.1 3 12 3C15.9 3 19 5.9 19 9.5C19 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </div>
+        <a href="#">Based in India</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-mark">
+      <span>INFLU<span class="x">NEX</span> INDIA</span>
+    </div>
+    <p>&copy; 2025 Influnex India. Influencer marketing, done properly.</p>
+  </div>
+</footer>
+
+</body>
+</html>
